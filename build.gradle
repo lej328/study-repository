@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+compileJava {
+  options.encoding = "UTF-8"
+  sourceCompatibility = 1.8
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+  providedCompile 'javax.servlet.jsp:jsp-api:2.2'
+  compile 'javax.servlet:jstl:1.2'
+  runtime fileTree(dir: 'lib', include: '*.jar')
+}

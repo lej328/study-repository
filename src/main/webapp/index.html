@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="/MVC1/images/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/MVC1/images/logo/favicon.ico" type="image/x-icon">
+<link href='https://fonts.googleapis.com/css?family=Fugaz+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/earlyaccess/notosanskr.css' rel='stylesheet' type='text/css'>
+<title>LuckyLucky.dev</title>
+
+<script src="/MVC1/lib/jquery/jquery.js"></script>
+<style>
+	* {
+		padding : 0px;
+		margin : 0px;
+		box-sizing : border-box;
+	}
+	
+	html, body {
+		width : 100%;
+		background-color : #04040c;
+		font-family: 'Ubuntu', 'Noto Sans KR', sans-serif;
+	}
+	
+	header {
+		width : 100%;
+		height : 150px;
+		background-color : #22252C;
+		position : fixed;
+		z-index : 998;
+	}
+	
+	nav {
+		width : 100%;
+		height : 50px;
+		background-color : #242a34;
+		color : #f4f4f7;
+		position : fixed;
+		top : 150px;
+		z-index : 998;
+	}
+	
+	nav>ul {
+		width : 400px;
+		font-size : 14px;
+		text-align : center;
+		font-weight : 600;
+		margin : 0px auto;
+		height : 100%;
+		line-height : 50px;
+	}
+	
+	nav>ul>li {
+		display : inline-block;
+		width : 80px;
+		cursor : pointer;
+	}
+	
+	aside {
+		position : fixed;
+		z-index : 999;
+		width : 400px;
+		height : 100%;
+		left : -400px;
+		background-color : #f4f4f7;
+		border-left : 2px solid rgba(22,22,22,0.9);
+		box-shadow : 0px -3px 3px #222;
+	}
+	
+	section {
+		background-color : #04040c;
+		width : 100%;
+	}
+	
+	section>div {
+		width : 100%;
+		height : 100%;
+		color : white;
+		position : relative;
+	}
+	
+	footer {
+		width : 100%;
+		height : 50px;
+		background-color : #04040c;
+		padding-top : 15px;
+		color : #f4f4f7;
+		text-align : center;
+		font-size : 12px;
+	}
+	
+	footer>p {
+		display : inline-block;
+		position : relative;
+		top : -10px;
+	}
+	
+	footer>img {
+		width : 30px;
+		height : 30px;
+	}
+	
+	::-webkit-scrollbar {
+	  width: 2px;
+	  height: 2px;
+	}
+	::-webkit-scrollbar-button {
+	  width: 0px;
+	  height: 0px;
+	}
+	::-webkit-scrollbar-thumb {
+	  background: #202020;
+	  border: 0px none #ffffff;
+	  border-radius: 0px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+	  background: #ffffff;
+	}
+	::-webkit-scrollbar-thumb:active {
+	  background: #000000;
+	}
+	::-webkit-scrollbar-track {
+	  background: #000417;
+	  border: 0px none #ffffff;
+	  border-radius: 0px;
+	}
+	::-webkit-scrollbar-track:hover {
+	  background: #666666;
+	}
+	::-webkit-scrollbar-track:active {
+	  background: #333333;
+	}
+	::-webkit-scrollbar-corner {
+	  background: transparent;
+	}
+
+	
+	#headerLogoWrap {
+		width : 150px;
+		height : 150px;
+		margin : 0px auto;
+	}
+	
+	#headerLogoWrap>img {
+		width : 150px;
+		height : 150px;
+	}
+	
+	#mainDiv {
+		background-image : url("/MVC1/images/background/code.jpg");
+	}
+	
+	#mainDiv>.opacityWrap {
+		width : 100%;
+		height : 100%;
+		position : absolute;
+		top : 0px;
+		left : 0px;
+		background-color : rgba(0,0,0,0.8);
+	}
+	
+	#mainDiv>.transformPolygon {
+		width : 400px;
+		height : 400px;
+		position : absolute;
+		background-image : url("/MVC1/images/background/code.jpg");
+		border : 5px solid rgba(255,255,255,0.2);
+	}
+	
+	#mainDiv>.textEffect {
+		width : 100px;
+		height : 100px;
+		background-color : rgba(0,0,0,0.8);
+		position : absolute;
+		text-align : center;
+		line-height : 100px;
+		font-size : 30px;
+		color : #f4f4f7;
+		font-family: 'Fugaz One', cursive;
+		opacity : 0;
+		border : 2px solid #f4f4f7;
+		overflow : hidden;
+	}
+	
+	#mainDiv>.topPrjList, .bottomPrjList {
+		width : 400px;
+		position : absolute;
+		font-family: 'Noto Sans KR', sans-serif;
+		opacity : 0;
+		height : 50px;
+	}
+	
+	.topPrjList>ul, .bottomPrjList>ul {
+		width : 100%;
+		line-height : 50px;
+		text-align : center;
+	}
+	
+	.topPrjList>ul>li, .bottomPrjList>ul>li {
+		display : inline-block;
+		padding : 0px 15px 0px 15px;
+		cursor : pointer;
+		font-size : 14px;
+	}
+	
+	.asideWrap {
+		position : relative;
+		width : 100%;
+		height : 100%;
+	}
+	
+	.close_btn {
+		position : absolute;
+		right : 10px;
+		top : 10px;
+		width : 30px;
+		height : 30px;
+		background-color : red;
+		z-index : 999;
+	}
+	
+	.close_btn>button {
+		width : 100%;
+		height : 100%;
+	}
+	
+	.portfolioWrap {
+		position : relative;
+		width : 100%;
+		height : 100%;
+		overflow-y : scroll;
+		overflow-x : hidden;
+	}
+	
+	.magicDealPf {
+		width : 100%;
+		height : 400%;
+	}
+	
+	.magicDealPf>.colorLabel {
+		width : 100%;
+		height : 50px;
+		background-color : gold;
+	}
+</style>
+</head>
+<body>
+	<header>
+		
+		<div id="headerLogoWrap">
+			<img src="/MVC1/images/logo/mainlogo.png"/>
+		</div>
+		
+	</header>
+	
+	<nav>
+		<ul>
+			<li>MAIN</li>
+			<li>ABOUT</li>
+			<li>MEMBERS</li>
+			<li>CONTACT</li>
+		</ul>
+	</nav>
+	
+	<aside>
+		<div class="asideWrap">
+			<span class="close_btn">
+				<button onclick="closePf()">x</button>
+			</span>
+			<div class="portfolioWrap">
+				<div class="magicDealPf">
+					<div class="colorLabel"></div>
+				</div>
+			</div>
+		</div>
+	</aside>
+	
+	<section>
+		<div id="mainDiv">
+			<div class="opacityWrap"></div>
+			<div class="transformPolygon"></div>
+			<div class="textEffect">
+				WORK HARD PLAY HARD<span style="color:tomato">_</span>
+			</div>
+			
+			<div class="topPrjList">
+				<ul>
+					<li onclick="openPf(0)">Hair headquaters</li>
+					<li onclick="openPf(1)">Second-life</li>
+					<li onclick="openPf(2)">SK Plan-it</li>
+				</ul>
+			</div>
+			
+			<div class="bottomPrjList">
+				<ul>
+					<li onclick="openPf(3)">Peekis</li>
+					<li onclick="openPf(4)">MagicDeal</li>
+					<li onclick="openPf(5)">Faminicle</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div>
+			about
+		</div>
+		
+		<div>
+			members
+		</div>
+		
+		<div>
+			contact
+		</div>
+	</section>
+	
+	<footer>
+		<p>copyright@</p><img src="/MVC1/images/logo/ico.png"/><p>.dev & churlBazi</p>
+	</footer>
+	
+</body>
+<script>
+	var pageHeight = $(window).height();
+	var pageWidth = $(window).width();
+	
+	$("section>div").css("height", pageHeight);
+	$("#mainDiv>.transformPolygon").css({
+		bottom : pageHeight/2-250,
+		left : pageWidth/2-200,
+		"background-position-x" : (-pageWidth/2+195),
+		"background-position-y" :  (-pageHeight/2+145),
+		opacity : 0
+	}).animate({
+		opacity : 1
+	},"slow", function() {
+		$("#mainDiv>.textEffect").css({
+			bottom : pageHeight/2-100,
+			left : pageWidth/2-250,
+		}).animate({
+			width : 500,
+			opacity : 1
+		}, "slow", function() {
+			$(".topPrjList").css({
+				bottom : pageHeight/2,
+				left : pageWidth/2-200
+			}).animate({
+				opacity : 1
+			}, "slow");
+			
+			$(".bottomPrjList").css({
+				bottom : pageHeight/2-150,
+				left : pageWidth/2-200
+			}).animate({
+				opacity : 1
+			}, "slow");
+		});
+	});
+	
+	var openPf = function(idx) {
+		$("aside").animate({
+			left : -400
+		},"fast", function() {
+			$("aside").animate({
+				left : 0
+			},"slow");
+		});
+	};
+	
+	var closePf = function() {
+		$("aside").animate({
+			left : -400
+		});
+	};
+</script>
+</html>
